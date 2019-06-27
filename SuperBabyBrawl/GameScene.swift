@@ -10,6 +10,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var lastUpdateTime: TimeInterval = 0
     var dt: TimeInterval = 0
+    var isJumping = false
     
     let playerMovePointsPerSecond: CGFloat = 300.0
     
@@ -60,9 +61,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.position = CGPoint(x: size.width/4,
                                   y: size.height/2)
         player.setScale(0.3)
-        player.physicsBody = SKPhysicsBody(rectangleOf: CGSize(
-            width: player.size.width,
-            height: player.size.height))
+        player.physicsBody = SKPhysicsBody(texture: player.texture!,
+                                           size: player.size)
+        player.physicsBody!.allowsRotation = false
         addChild(player)
         //PlayerNode = childNode(withName: "player") as? playerNode
         //physicsWorld.contactDelegate = self
@@ -88,7 +89,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if player != nil{
             //print("\(player.position.x)")
             player.position = CGPoint(x: player.position.x + xAcceleration * moveSpeed,
-                                      y: player.position.y + yAcceleration * moveSpeed)
+                                      y: player.position.y )
             if(xAcceleration <= 0){
                 //player.xScale = 1
             } else {
@@ -152,11 +153,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     //                }
                     
                     xAcceleration = xDist * joystickSpeed
-                    yAcceleration = (yDist * joystickSpeed) * -1
+                    yAcceleration = yDist * joystickSpeed
+                    if yAcceleration < -0.1 {
+                        if !isJumping {
+                        jump()
+                        }
+                    }
                     
                 }
             }
         }
+    
+    func jump() {
+        player.physicsBody?.applyImpulse(CGVector(dx: 0,
+                                                dy: size.height/2))
+        isJumping = true
+        print("Jump\(yAcceleration)")
+    }
+    
+    func rotate(sprite: SKSpriteNode, direction: CGPoint) {
+        
+    }
         
         // Add in the touchesEnded method below
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -167,10 +184,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     joystickBall.run(returnToCenter)
                     xAcceleration = 0.0
                     yAcceleration = 0.0
+                    isJumping = false
                 }
             }
+        
             aHit = false
             bHit = false
+        xAcceleration = 0.0
+        yAcceleration = 0.0
         }
         
         func setupButton() {
@@ -179,8 +200,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             buttonB.size = CGSize(width: 100, height: 100)
             buttonB.color = SKColor.blue
             buttonB.colorBlendFactor = 1
-            buttonA.position = CGPoint(x: 1900, y: size.height/5 - 200)
-            buttonB.position = CGPoint(x: 1800, y: size.height/5 - 200)
+            buttonA.position = CGPoint(x: size.width * 0.9, y: size.height * 0.2)
+            buttonB.position = CGPoint(x: size.width * 0.95, y: size.height * 0.2)
             buttonA.zPosition = 10
             buttonB.zPosition = 10
             
@@ -193,7 +214,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             joystickNeeded = true
             joystickBase.scale(to: CGSize(width: 150, height: 150))
             scene?.addChild(joystickBase)
-            let joyPos = CGPoint(x: size.width/5 - 200, y: size.height/5 - 200)
+            let joyPos = CGPoint(x: size.width * 0.2, y: size.height * 0.2)
             joystickBase.position = joyPos
             joystickBase.name = "JoystickBase"
             //
