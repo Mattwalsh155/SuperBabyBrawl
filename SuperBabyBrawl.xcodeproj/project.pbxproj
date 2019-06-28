@@ -31,6 +31,8 @@
 		2E52C52E22BB0490006DF885 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E52C52C22BB0490006DF885 /* LaunchScreen.storyboard */; };
 		2E52C53922BB0490006DF885 /* SuperBabyBrawlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52C53822BB0490006DF885 /* SuperBabyBrawlTests.swift */; };
 		2E52C54422BB0490006DF885 /* SuperBabyBrawlUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E52C54322BB0490006DF885 /* SuperBabyBrawlUITests.swift */; };
+		FA0428BB22C6CCED0056710E /* BabyKick.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA0428BA22C6CCED0056710E /* BabyKick.sks */; };
+		FA0428BD22C6CCFD0056710E /* BabyPunch.sks in Resources */ = {isa = PBXBuildFile; fileRef = FA0428BC22C6CCFD0056710E /* BabyPunch.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		2E52C53F22BB0490006DF885 /* SuperBabyBrawlUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperBabyBrawlUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E52C54322BB0490006DF885 /* SuperBabyBrawlUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperBabyBrawlUITests.swift; sourceTree = "<group>"; };
 		2E52C54522BB0490006DF885 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA0428BA22C6CCED0056710E /* BabyKick.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BabyKick.sks; sourceTree = "<group>"; };
+		FA0428BC22C6CCFD0056710E /* BabyPunch.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BabyPunch.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +157,9 @@
 			children = (
 				2E52C51D22BB048F006DF885 /* AppDelegate.swift */,
 				2E52C52122BB048F006DF885 /* Actions.sks */,
+				FA0428BA22C6CCED0056710E /* BabyKick.sks */,
 				2E52C51F22BB048F006DF885 /* GameScene.sks */,
+				FA0428BC22C6CCFD0056710E /* BabyPunch.sks */,
 				2E52C52322BB048F006DF885 /* GameScene.swift */,
 				2E52C52522BB048F006DF885 /* GameViewController.swift */,
 				2E52C52722BB048F006DF885 /* Main.storyboard */,
@@ -288,12 +294,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA0428BD22C6CCFD0056710E /* BabyPunch.sks in Resources */,
 				2E52C52922BB048F006DF885 /* Main.storyboard in Resources */,
 				2E52C52022BB048F006DF885 /* GameScene.sks in Resources */,
 				2E07149922C1A0E500ADE541 /* player.sks in Resources */,
 				2E52C52B22BB0490006DF885 /* Assets.xcassets in Resources */,
 				2E52C52E22BB0490006DF885 /* LaunchScreen.storyboard in Resources */,
 				2E52C52222BB048F006DF885 /* Actions.sks in Resources */,
+				FA0428BB22C6CCED0056710E /* BabyKick.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
