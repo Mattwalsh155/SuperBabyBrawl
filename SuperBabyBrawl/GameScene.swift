@@ -39,7 +39,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private var imp : SKNode?
     var currentLevel: Int = 0
-
+    
+    //let rotatePlayer = SKAction.rotate(byAngle: 180)
     
     override func didMove(to view: SKView) {
         view.showsPhysics = true
@@ -96,6 +97,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //player.xScale = -1
             }
         }
+        //rotate(sprite: player, direction: velocity)
     }
         
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -171,10 +173,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("Jump\(yAcceleration)")
     }
     
-    func rotate(sprite: SKSpriteNode, direction: CGPoint) {
-        
-    }
-        
+//    func rotate(sprite: SKSpriteNode, direction: CGPoint) {
+//        sprite.zRotation = atan2(direction.y, direction.x)
+//    }
+    
         // Add in the touchesEnded method below
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
             if joystickNeeded == true {
