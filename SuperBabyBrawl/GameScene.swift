@@ -10,7 +10,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var lastUpdateTime: TimeInterval = 0
     var dt: TimeInterval = 0
-    var isJumping = false
+    var isJumping: Bool = false
+    
+    var flipPlayer: Bool = false
     
     let playerMovePointsPerSecond: CGFloat = 300.0
     
@@ -97,7 +99,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //player.xScale = -1
             }
         }
-        //rotate(sprite: player, direction: velocity)
+        //rotate(sprite: player, direction: )
     }
         
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -173,9 +175,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("Jump\(yAcceleration)")
     }
     
-//    func rotate(sprite: SKSpriteNode, direction: CGPoint) {
-//        sprite.zRotation = atan2(direction.y, direction.x)
-//    }
+    func rotate(sprite: SKSpriteNode, direction: CGPoint) {
+        sprite.zRotation = atan2(direction.y, direction.x)
+    }
     
         // Add in the touchesEnded method below
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -202,8 +204,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             buttonB.size = CGSize(width: 100, height: 100)
             buttonB.color = SKColor.blue
             buttonB.colorBlendFactor = 1
-            buttonA.position = CGPoint(x: size.width * 0.9, y: size.height * 0.2)
-            buttonB.position = CGPoint(x: size.width * 0.95, y: size.height * 0.2)
+            buttonA.position = CGPoint(x: size.width * 0.9, y: size.height * 0.1)
+            buttonB.position = CGPoint(x: size.width * 0.95, y: size.height * 0.1)
             buttonA.zPosition = 10
             buttonB.zPosition = 10
             
@@ -216,7 +218,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             joystickNeeded = true
             joystickBase.scale(to: CGSize(width: 150, height: 150))
             scene?.addChild(joystickBase)
-            let joyPos = CGPoint(x: size.width * 0.2, y: size.height * 0.2)
+            let joyPos = CGPoint(x: size.width * 0.1, y: size.height * 0.1)
             joystickBase.position = joyPos
             joystickBase.name = "JoystickBase"
             //
